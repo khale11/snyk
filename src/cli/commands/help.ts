@@ -12,7 +12,11 @@ export = async function help(item: string | boolean) {
   // aka: /\W/g but figured this was easier to read
   item = item.replace(/[^a-z-]/gi, '');
 
-  const filename = path.resolve(__dirname, '../../../help', item + '.txt');
+  const filename = path.resolve(
+    __dirname,
+    '../../../help/commands-txt',
+    `snyk-${item}.txt`,
+  );
   try {
     return fs.readFileSync(filename, 'utf8');
   } catch (error) {
